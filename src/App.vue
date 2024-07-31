@@ -23,14 +23,10 @@ const uploadFile = async (event) => {
       .upload(file.name, file)
       const url = supabase.storage.from('photos_public').getPublicUrl(file.name)
       data.url = url.data.publicUrl
-    if (error) {
-      console.error(error)
-    } else {
-      photos.value.push(data)
-    }
   }
-  loading.value = false
   await listFiles()
+  showFiles(photoObject.value.page)
+  loading.value = false
 }
 
 const openFile = async(photo) => {
@@ -108,7 +104,9 @@ onMounted(async () => {
           </v-col>
           
           <v-row align="center" justify="center">
-      
+            <v-col cols="12" v-if="loading" >
+              <v-progress-linear indeterminate color="indigo" height="30"></v-progress-linear>
+            </v-col>
             <template v-for="photo in photos" :key="photo.id" >
             <v-col v-if="photo.name != '.emptyFolderPlaceholder'" cols="4" align="center" class="d-flex child-flex">
               <v-img
