@@ -98,7 +98,7 @@ onMounted(async () => {
 <template>
   <v-row align="center" justify="center" class="my-4">
     <v-col align="center" cols="12">
-      <div class="text-h5 font-italic mb-2" >Hochzeitsfotos Joanna & Matthias</div>
+      <div class="mb-2 wedding-title">Hochzeitsfotos Joanna & Matthias</div>
       <v-card class="mx-4" elevation="5">
         <v-card-title class="bg-indigo">Bilder hochladen</v-card-title>
         <v-card-text class="mt-4">
@@ -148,5 +148,11 @@ onMounted(async () => {
 <style>
 body {
   background-color: white; /* Change this to your desired background color */
+}
+.wedding-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color:"black";
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 </style>
