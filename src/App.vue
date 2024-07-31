@@ -86,12 +86,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-row align="center" justify="center" class="ma-4">
+  <v-row align="center" justify="center" class="my-4">
     <v-col align="center" cols="12">
       <v-card class="mx-4" elevation="5">
         <v-card-title class="bg-indigo">Bilder hochladen</v-card-title>
         <v-card-text class="mt-4">
-          <v-file-input chips variant="outlined" label="Fotos hochladen" @change="uploadFile" multiple></v-file-input>
+          <v-row align="center" justify="center">
+            <v-col cols="12" align="center" class="mr-10">
+              <v-file-input chips variant="outlined" label="Fotos hochladen" @change="uploadFile" multiple></v-file-input>
+            </v-col>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-col>
@@ -99,12 +103,16 @@ onMounted(async () => {
       <v-card class="mx-4" :loading="loading"  elevation="5">
         <v-card-title class="bg-indigo mb-4">Galerie</v-card-title>
         <v-card-text>
-          <v-pagination @click="showFiles(photoObject.page)" size="small" v-model="photoObject.page" :length="photoObject.length" density="compact"></v-pagination>
-          <v-row align="center" justify="center" class="mx-4">
+          <v-col>
+            <v-pagination @click="showFiles(photoObject.page)" size="small" v-model="photoObject.page" :length="photoObject.length" density="compact"></v-pagination>
+          </v-col>
+          
+          <v-row align="center" justify="center">
       
             <template v-for="photo in photos" :key="photo.id" >
             <v-col v-if="photo.name != '.emptyFolderPlaceholder'" cols="4" align="center" class="d-flex child-flex">
               <v-img
+                  style="cursor: pointer"
                   @click="openFile(photo)"
                   :lazy-src="photo.url"
                   :src="photo.url"
