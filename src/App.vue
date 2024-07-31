@@ -5,6 +5,7 @@ import { supabase } from './lib/supabaseClient'
 
 let photos = ref([])
 let loading = ref(false)
+let fileInput = ref(null)
 
 let photoObject = ref({
   length: 1,
@@ -22,29 +23,42 @@ const uploadFile = async (event) => {
       .from('photos_public')
       .upload(file.name, file)
       const url = supabase.storage.from('photos_public').getPublicUrl(file.name)
-      data.url = url.data.publicUrl
+
+      if (error) {
+        console.error(error)
+      }
+      await supabase
+      .from('photos')
+      .insert({
+        uploader: null,
+        name: file.name,
+        public_url: url.data.publicUrl
+      })
   }
+  
   await listFiles()
   showFiles(photoObject.value.page)
+  fileInput.value = null
   loading.value = false
 }
 
 const openFile = async(photo) => {
-  window.open(photo.url)
+  window.open(photo.public_url)
 }
 
 const listFiles = async () => {
+  photoObject.value = {
+  length: 1,
+  page: 1,
+  photosPerPage: 6,
+  photoItems:[]
+}
   const { data, error } = await supabase
-    .storage
-    .from('photos_public')
-    .list()
+    .from('photos')
+    .select("*")
   if (error) {
     console.error(error)
   } else {
-    data.forEach(photo => {
-      const url = supabase.storage.from('photos_public').getPublicUrl(photo.name)
-      photo.url = url.data.publicUrl
-    })
   }
   var index = null;
   for (var i = 0 ; i < data.length ; i++) {
@@ -84,9 +98,7 @@ onMounted(async () => {
 <template>
   <v-row align="center" justify="center" class="my-4">
     <v-col cols="12">
-      <div class="text-center">
         <div class="text-h5 font-italic" >Hochzeitsfotos Joanna & Matthias</div>
-      </div>
     </v-col>
     <v-col align="center" cols="12">
       <v-card class="mx-4" elevation="5">
@@ -94,7 +106,7 @@ onMounted(async () => {
         <v-card-text class="mt-4">
           <v-row align="center" justify="center">
             <v-col cols="12" align="center" class="mr-10">
-              <v-file-input chips variant="outlined" label="Fotos hochladen" @change="uploadFile" multiple></v-file-input>
+              <v-file-input v-model="fileInput" chips variant="outlined" label="Fotos hochladen" @change="uploadFile" multiple></v-file-input>
             </v-col>
           </v-row>
         </v-card-text>
@@ -117,8 +129,8 @@ onMounted(async () => {
               <v-img
                   style="cursor: pointer"
                   @click="openFile(photo)"
-                  :lazy-src="photo.url"
-                  :src="photo.url"
+                  :lazy-src="photo.public_url"
+                  :src="photo.public_url"
                   aspect-ratio="1"
                   class="bg-grey-lighten-2"
                   cover>
