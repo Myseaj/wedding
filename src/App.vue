@@ -96,6 +96,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <v-card flat theme="light">
   <v-row align="center" justify="center" class="my-4">
     <v-col align="center" cols="12">
       <div class="mb-2 wedding-title">Hochzeitsfotos Joanna & Matthias</div>
@@ -143,6 +144,7 @@ onMounted(async () => {
     
     
   </v-row>
+</v-card>
 </template>
 
 <style>
