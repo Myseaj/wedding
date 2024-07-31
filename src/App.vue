@@ -146,9 +146,6 @@ onMounted(async () => {
 </template>
 
 <style>
-body {
-  background-color: white; /* Change this to your desired background color */
-}
 .wedding-title {
   font-size: 1.3rem;
   font-weight: 400;
