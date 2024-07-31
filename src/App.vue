@@ -85,7 +85,7 @@ onMounted(async () => {
   <v-row align="center" justify="center" class="my-4">
     <v-col cols="12">
       <div class="text-center">
-        <div class="text-h5" style='font-family:"Times New Roman", Times, serif'>Hochzeitsfotos Joanna & Matthias</div>
+        <div class="text-h5 font-italic" >Hochzeitsfotos Joanna & Matthias</div>
       </div>
     </v-col>
     <v-col align="center" cols="12">
