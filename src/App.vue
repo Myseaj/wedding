@@ -98,7 +98,9 @@ onMounted(async () => {
 <template>
   <v-row align="center" justify="center" class="my-4">
     <v-col align="center" cols="12">
-      <div class="mb-2 wedding-title">Hochzeitsfotos Joanna & Matthias</div>
+      <v-card flat class="mb-2">
+        <div class="wedding-title">Hochzeitsfotos Joanna & Matthias</div>
+      </v-card>
       <v-card class="mx-4" elevation="5">
         <v-card-title class="bg-indigo">Bilder hochladen</v-card-title>
         <v-card-text class="mt-4">
