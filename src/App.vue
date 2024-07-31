@@ -88,7 +88,7 @@ onMounted(async () => {
 <template>
   <v-row align="center" justify="center" class="ma-4">
     <v-col align="center" cols="12">
-      <v-card class="mx-4">
+      <v-card class="mx-4" elevation="5">
         <v-card-title class="bg-indigo">Bilder hochladen</v-card-title>
         <v-card-text class="mt-4">
           <v-file-input chips variant="outlined" label="Fotos hochladen" @change="uploadFile" multiple></v-file-input>
@@ -96,7 +96,7 @@ onMounted(async () => {
       </v-card>
     </v-col>
     <v-col align="center" cols="12">
-      <v-card class="mx-4" :loading="loading">
+      <v-card class="mx-4" :loading="loading"  elevation="5">
         <v-card-title class="bg-indigo mb-4">Galerie</v-card-title>
         <v-card-text>
           <v-pagination @click="showFiles(photoObject.page)" size="small" v-model="photoObject.page" :length="photoObject.length" density="compact"></v-pagination>
@@ -124,5 +124,8 @@ onMounted(async () => {
   </v-row>
 </template>
 
-<style scoped>
+<style>
+body {
+  background-color: white; /* Change this to your desired background color */
+}
 </style>
