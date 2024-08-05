@@ -43,7 +43,7 @@
         <v-card-text class="mt-4">
           <v-row align="center" justify="center">
             <v-col cols="12">
-              <v-select density="compact" v-model="selectedTask" item-title="short"  item-value="short" :items="tasks" :label="language == 'de' ? 'Aufgabe' : 'Zadania'" variant="outlined"></v-select>
+              <v-select density="compact" v-model="selectedTask" :item-title="language == 'de' ? 'short_de' : 'short_pl'"  item-value="short" :items="tasks" :label="language == 'de' ? 'Aufgabe' : 'Zadania'" variant="outlined"></v-select>
               <v-text-field @input="setName" density="compact" variant="outlined" v-model="uploader" :label="language == 'de' ? 'Dein Name' : 'Twoje imię'"></v-text-field>
               <v-file-input prepend-icon="mdi-camera" density="compact" v-model="fileInput" chips variant="outlined" :label="language == 'de' ? 'Fotos hochladen' : 'Przesyłać zdjęcia'" @change="uploadFile" multiple></v-file-input>
             </v-col>
