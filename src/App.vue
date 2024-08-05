@@ -3,7 +3,7 @@
     <v-col align="right" class="my-n8">
       <v-btn-toggle v-model="language" size="x-small">
         <v-btn value="de" @click="setLocalStorage('de')" size="x-small" color="green">Deutsch</v-btn>
-        <v-btn value="pl" @click="setLocalStorage('pl')" color="green" size="x-small">Polnisch</v-btn>
+        <v-btn value="pl" @click="setLocalStorage('pl')" color="green" size="x-small">Polski</v-btn>
       </v-btn-toggle>
     </v-col>
     <v-col align="center" cols="12">
@@ -101,7 +101,7 @@ let fileInput = ref(null)
 let language = ref('de')
 
 const tasks = [
-  {id:"0",short_:"Allgemein",short_de:"Allgemein",short_pl:"Nagminny",task_de:"Allgemein",task_pl:"Nagminny"},
+  {id:"0",short_:"Allgemein",short_de:"Allgemein",short_pl:"Ogólny",task_de:"Allgemein",task_pl:"Ogólny"},
   {id:"1",short:"Foto mit allen vom Tisch",short_de:"Foto mit allen vom Tisch",short_pl:"Zdjęcie ze wszystkimi przy stole",task:"Mach ein Foto mit allen Personen an deinem Tisch",task_de:"Mach ein Foto mit allen Personen an deinem Tisch",task_pl:"Zrób zdjęcie ze wszystkimi osobami przy swoim stole"},
   {id:"2",short:"Fotos mit Bekannten",short_de:"Fotos mit Bekannten",short_pl:"Zdjęcia ze znajomymi",task:"Mach ein Foto mit allen Gästen, die du schon vor der Hochzeit kanntest",task_de:"Mach ein Foto mit allen Gästen, die du schon vor der Hochzeit kanntest",task_pl:"Zrób zdjęcie ze wszystkimi gośćmi, których znasz przed ślubem"},
   {id:"3",short:"Foto mit der ähnlichsten Person",short_de:"Foto mit der ähnlichsten Person",short_pl:"Zdjęcie z najpodobniejszą osobą",task:"Mach ein Bild mit der Person auf der Hochzeit, die dir am ähnlichsten sieht",task_de:"Mach ein Bild mit der Person auf der Hochzeit, die dir am ähnlichsten sieht",task_pl:"Zrób zdjęcie z osobą na weselu, która najbardziej ci przypomina"},
